@@ -1,0 +1,141 @@
+/*
+  This is the beginning of our stylesheet. We start by defining a global set of
+  design tokens (variables). This establishes a consistent design system that will
+  govern the entire look and feel of our site, making it easy to update and theme.
+*/
+
+:root {
+  /*
+    The :root pseudo-class selects the <html> element, making these variables
+    globally available throughout the document. We are defining our 'light'
+    theme values here as the default theme.
+  */
+
+  /* ========================================
+     COLOR PALETTE - LIGHT THEME
+     ======================================== */
+  /* A vibrant, accessible blue for primary interactive elements like links and buttons. */
+  --primary-color: #007bff;
+  /* A muted gray for secondary text or less important elements. */
+  --secondary-color: #6c757d;
+  /* A very light gray for the main page background, which is softer on the eyes than pure white. */
+  --background-color: #f8f9fa;
+  /* White for surfaces that should stand out from the background, like cards, headers, and forms. */
+  --surface-color: #ffffff;
+  /* A dark, highly readable color for main text content. We use a dark gray instead of pure black for better readability. */
+  --text-color: #212529;
+  /* A slightly lighter text color for subtitles, placeholders, or less emphasized text. */
+  --text-color-light: #495057;
+  /* A subtle border color for elements like cards and form inputs. */
+  --border-color: #dee2e6;
+  /* A subtle shadow color to give elements depth. */
+  --shadow-color: rgba(0, 0, 0, 0.1);
+
+  /* ========================================
+     TYPOGRAPHY
+     ======================================== */
+  /* A clean, modern, and system-agnostic sans-serif font stack. The browser will try each font from left to right. */
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* The base font size for the document. Using 'rem' units allows for better accessibility and scalability. */
+  --font-size-base: 1rem; /* Typically defaults to 16px */
+  /* Base line height for improved readability. It's unitless, meaning it's a multiplier of the font size. */
+  --line-height-base: 1.5;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  /* ========================================
+     SPACING & LAYOUT
+     ======================================== */
+  /* A base unit for consistent spacing (margins, padding). We can use multiples of this unit. */
+  --spacing-unit: 1rem;
+  /* Max width for our .container class to ensure content is readable on wide screens. */
+  --container-width: 1140px;
+  /* A consistent border-radius for rounded corners on buttons, cards, and inputs. */
+  --border-radius: 0.25rem;
+}
+
+/*
+  ========================================
+  CSS RESET
+  ========================================
+  This reset removes inconsistent browser default styles, providing a clean
+  and predictable baseline to build our own design upon.
+*/
+
+/*
+  1. Use a more intuitive box-sizing model on all elements.
+     This makes layout work more predictable, as padding and border
+     are included in the element's total width and height.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+  2. Remove default margin and padding from all elements.
+     This gives us full control over spacing.
+*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*
+  3. Allow percentage-based heights in the application.
+*/
+html,
+body {
+  height: 100%;
+}
+
+/*
+  4. Create a root stacking context. This is a modern best practice to prevent
+     z-index issues with elements like modals or dropdowns.
+*/
+#root, #__next {
+    isolation: isolate;
+}
+body{
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    color: var(--text-color);
+    background-color: var(--background-color);
+
+}
+header{
+    background-color: var(--surface-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
+    padding: var(--spacing-unit) 0;
+    /* 
+    This is the magic for a "sticky" header. 
+    - 'position: sticky' makes the element behave like a normal element until it hits 
+      the top of the viewport during a scroll.
+    - 'top: 0' tells the browser where to "stick" it (0px from the top).
+    - 'z-index' ensures the header stays on top of other content when scrolling.
+  */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit);
+}
+header nav ul{
+    display: flex;
+    gap: calc(var(--spacing-unit) * 2);
+    list-style: none;
+}
+header nav ul li a{
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: var(--font-weight-bold);
+    padding: 0.5rem;
+}
