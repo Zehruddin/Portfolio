@@ -15,7 +15,7 @@
      COLOR PALETTE - LIGHT THEME
      ======================================== */
   /* A vibrant, accessible blue for primary interactive elements like links and buttons. */
-  --primary-color: #007bff;
+  --primary-color: #388de8;
   /* A muted gray for secondary text or less important elements. */
   --secondary-color: #6c757d;
   /* A very light gray for the main page background, which is softer on the eyes than pure white. */
@@ -138,4 +138,141 @@ header nav ul li a{
     color: var(--text-color);
     font-weight: var(--font-weight-bold);
     padding: 0.5rem;
+}
+#hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--spacing-unit) * 2) 0;
+}
+#hero.container {
+  text-align: center;
+}
+#hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: calc(var(--spacing-unit) * 2); /* Add more space below the subtitle */
+  color: var(--text-color-light);
+}
+#hero .hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: calc(var(--spacing-unit) * 2); /* Add more space below the subtitle */
+  color: var(--text-color-light);
+}
+#hero p:last-of-type {
+  /*
+    Constrain the width of the final introductory paragraph to ensure it
+    remains easily readable on very wide screens.
+  */
+  max-width: 600px;
+  /* margin: 0 auto; will center the paragraph block if its max-width is met. */
+  margin: 0 auto;
+}
+#about {
+  /* Add significant vertical padding to give the section breathing room. */
+  padding: calc(var(--spacing-unit) * 4) 0;
+}
+#about h1 {
+  text-align: center;
+  margin-bottom: calc(var(--spacing-unit) * 3);
+}
+.about-content {
+  display: flex;
+  align-items: center;
+  /* Create a sizable gap between the image column and the text column. */
+  gap: calc(var(--spacing-unit) * 4);
+}
+.about-image {
+  flex: 1;
+  max-width: 300px;
+}
+.about-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+.about-text {
+  flex: 2;
+}
+.about-text p {
+  /* Add space between the paragraphs for better readability. */
+  margin-bottom: var(--spacing-unit);
+}
+
+/* Remove the margin from the last paragraph to avoid extra space at the bottom. */
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Projects Section */
+#projects {
+  /* Give the projects section ample breathing room from the 'About' section. */
+  padding: calc(var(--spacing-unit) * 4) 0;
+  /* Use our main background color, as the cards will have the surface color. */
+  background-color: var(--background-color);
+}
+#projects h1 {
+  text-align: center;
+  margin-bottom: calc(var(--spacing-unit) * 3);
+}
+.project-card {
+  /* Use the lighter --surface-color so the card stands out from the page background. */
+  background-color: var(--surface-color);
+  
+  /* Add our consistent rounded corners and a subtle border. */
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  
+  /* 
+    This is the key to the card's "lifted" feel.
+    box-shadow: [horizontal-offset] [vertical-offset] [blur-radius] [color];
+    We use a small vertical offset, a soft blur, and our semi-transparent shadow color.
+  */
+  box-shadow: 0 4px 8px var(--shadow-color);
+
+  /* 
+    Crucial for design: This clips anything that tries to "spill out" of the card.
+    This ensures that the sharp corners of our <img> are clipped to match the
+    card's rounded corners.
+  */
+  overflow: hidden;
+}
+.project-image {
+  width: 100%;
+  display: block;
+}
+.project-info {
+  /* Use our spacing variable for consistent padding inside the card. */
+  padding: calc(var(--spacing-unit) * 1.5);
+}
+
+.project-info h2 {
+  /* Add space below the card's title. */
+  margin-bottom: var(--spacing-unit);
+}
+
+.project-links {
+  /* We add padding to the link area as well. */
+  padding: 0 calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 1.5);
+  display: flex;
+  gap: var(--spacing-unit);
+}
+.project-links a {
+  /* Style the links to look like buttons for a clear call to action. */
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-weight: var(--font-weight-bold);
+  border-radius: var(--border-radius);
+  
+  /* Style for the primary link (e.g., Live Demo) */
+  background-color: var(--primary-color);
+  color: var(--surface-color);
+}
+/* A secondary style for the 'View Code' link to create visual hierarchy. */
+.project-links a:last-child {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
 }
