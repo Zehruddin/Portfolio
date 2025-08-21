@@ -15,17 +15,21 @@
      COLOR PALETTE - LIGHT THEME
      ======================================== */
   /* A vibrant, accessible blue for primary interactive elements like links and buttons. */
-  --primary-color: #388de8;
+  /* --primary-color: #388de8; */
+  --primary-color: #141a20;
   /* A muted gray for secondary text or less important elements. */
   --secondary-color: #6c757d;
   /* A very light gray for the main page background, which is softer on the eyes than pure white. */
-  --background-color: #f8f9fa;
+  --background-color: #000000;
   /* White for surfaces that should stand out from the background, like cards, headers, and forms. */
-  --surface-color: #ffffff;
+  /* --surface-color: #ffffff; */
+  --surface-color: #a7c4ef;
   /* A dark, highly readable color for main text content. We use a dark gray instead of pure black for better readability. */
-  --text-color: #212529;
+  /* --text-color: #212529; */
+  --text-color: #5081b5;
   /* A slightly lighter text color for subtitles, placeholders, or less emphasized text. */
-  --text-color-light: #495057;
+  /* --text-color-light: #495057; */
+  --text-color-light: #2c74c2;
   /* A subtle border color for elements like cards and form inputs. */
   --border-color: #dee2e6;
   /* A subtle shadow color to give elements depth. */
@@ -138,6 +142,7 @@ header nav ul li a{
     color: var(--text-color);
     font-weight: var(--font-weight-bold);
     padding: 0.5rem;
+    text-align: center;
 }
 #hero {
   min-height: 90vh;
@@ -275,4 +280,12 @@ header nav ul li a{
   background-color: transparent;
   color: var(--primary-color);
   border: 1px solid var(--primary-color);
+}
+.projects-container{
+  display: flex;
+  gap: var(--spacing-unit);
+}
+#experience h1 {
+  text-align: center;
+  margin-bottom: calc(var(--spacing-unit) * 3);
 }
