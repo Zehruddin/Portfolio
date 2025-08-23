@@ -19,6 +19,12 @@
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
+        <div class="theme-switcher">
+            <label for="theme-toggle" class="switch-label">
+                <input type="checkbox" id="theme-toggle" class="switch-checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
     </header>
     <section id="hero">
         <div class="container">
@@ -44,9 +50,21 @@
     <section id="experience">
         <div class="container">
             <h1>Experience</h1>
-            <h3>QA Intern - ADP India Pvt. Ltd.</h3><h3>Sept 2024 - Jun 2025</h3>
-            <p>I have worked as a Quality Assurance Intern in ADP India Pvt. Ltd, where I performed manual and automation testing for a multi-country payroll(MCP) product "Celergo 2.0"</p>
-            <p>Skills used: Selenium testing, JavaScript automation codes, Cucumber framework</p>
+            <div class="experience-content">
+                <div class="experience-title-box">
+                    <div class="experience-title">
+                        <h3>QA Intern - ADP India Pvt. Ltd.</h3>
+                    </div> 
+                    <div class="experience-duration">
+                        <h3>Sept 2024 - Jun 2025</h3>
+                    </div>
+                </div>
+                <p>Collaborated with a Scrum team to test ADP’s Multi-Country Payroll (MCP) web
+                    application for cross-country compliance and performance.</p>
+                <p> Conducted manual and automated testing of payroll features to validate business logic and user workflows.</p>
+                <p>Developed and maintained automation scripts using JavaScript, Protractor, Selenium, and Cucumber (BDD).</p>
+                <p><strong>Skills used:</strong> Selenium testing, JavaScript automation codes, Cucumber framework</p>
+        </div>
         </div>
     </section>
     <section id="projects">
@@ -66,10 +84,10 @@
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="images/project-placeholder-1.jpg" alt="Project-1" class="project-image">
+                    <img src="images/project-placeholder-2.jpg" alt="Project-1" class="project-image">
                     <div class="project-info">
                         <h2>Bank Application</h2>
-                        <p>Built a Gen-AI-powered assistant offering personalized financial advice, budgeting, and savings insights via a natural language interface.</p>
+                        <p>Developed a web-based banking system using Java Servlets for customer transactions and account management.</p>
                         <p><b>Technology Stack :</b> HTML, CSS, Java Script, Java, Servlets, MySQL</p>
                     </div>
                     <div class="project-links">
@@ -78,10 +96,10 @@
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="images/project-placeholder-1.jpg" alt="Project-1" class="project-image">
+                    <img src="images/project-placeholder-3.jpg" alt="Project-1" class="project-image">
                     <div class="project-info">
                         <h2>Employee Task Tracker</h2>
-                        <p>Built a Gen-AI-powered assistant offering personalized financial advice, budgeting, and savings insights via a natural language interface.</p>
+                        <p>Built a web-based system using Java Servlets to help organizations track and manage employee work hours efficiently.</p>
                         <p><b>Technology Stack :</b> HTML, CSS, Java Script, Java, Spring Boot, MySQL</p>
                     </div>
                     <div class="project-links">
@@ -94,7 +112,7 @@
     </section>
     <section id="contact">
         <div class="continer">
-            <h2>Contact Me</h2>
+            <h1>Contact Me</h1>
             <p>I'm always open to discussing new projects or opportunities. Feel free to reach out!</p>
             <form action="">
                 <label for="name">Name</label><input type="text" id="name" name="user-name" placeholder="Your Name" required>
