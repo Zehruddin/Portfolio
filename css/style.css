@@ -15,21 +15,22 @@
      COLOR PALETTE - LIGHT THEME
      ======================================== */
   /* A vibrant, accessible blue for primary interactive elements like links and buttons. */
-  /* --primary-color: #388de8; */
-  --primary-color: #141a20;
+  --primary-color: #388de8;
+  /* --primary-color: #141a20; */
   /* A muted gray for secondary text or less important elements. */
   --secondary-color: #6c757d;
   /* A very light gray for the main page background, which is softer on the eyes than pure white. */
-  --background-color: #000000;
+  --background-color: #f5f9f9;
+  /* --background-color: #000000; */
   /* White for surfaces that should stand out from the background, like cards, headers, and forms. */
-  /* --surface-color: #ffffff; */
-  --surface-color: #a7c4ef;
+  --surface-color: #ffffff;
+  /* --surface-color: #a7c4ef; */
   /* A dark, highly readable color for main text content. We use a dark gray instead of pure black for better readability. */
-  /* --text-color: #212529; */
-  --text-color: #5081b5;
+  --text-color: #212529;
+  /* --text-color: #5081b5; */
   /* A slightly lighter text color for subtitles, placeholders, or less emphasized text. */
-  /* --text-color-light: #495057; */
-  --text-color-light: #2c74c2;
+  --text-color-light: #495057;
+  /* --text-color-light: #2c74c2; */
   /* A subtle border color for elements like cards and form inputs. */
   --border-color: #dee2e6;
   /* A subtle shadow color to give elements depth. */
@@ -56,6 +57,39 @@
   --container-width: 1140px;
   /* A consistent border-radius for rounded corners on buttons, cards, and inputs. */
   --border-radius: 0.25rem;
+}
+
+
+/* COLOR PALAETTE - DARK THEME */
+html[data-theme='dark'] {
+  /* =======================================
+     COLOR PALETTE - DARK THEME
+     ======================================== */
+  
+  /* The primary color can often stay the same, or you might want a slightly less saturated version. We'll keep it for now. */
+  /* --primary-color: #007bff; */
+  --primary-color: rgb(147 197 253);
+  
+  /* For secondary elements, a lighter gray works well on a dark background. */
+  --secondary-color: #adb5bd;
+
+  /* The main page background. A very dark gray is often preferred over pure black as it's less harsh on the eyes. */
+  --background-color: #121212;
+  
+  /* The color for "surfaces" like cards and headers. This should be slightly lighter than the main background to create separation. */
+  --surface-color: #1e1e1e;
+  
+  /* The main text color. We use a light, off-white for readability, avoiding pure white which can cause eye strain. */
+  --text-color: #e9ecef;
+  
+  /* A slightly dimmer text color for subtitles or less important information. */
+  --text-color-light: #ced4da;
+  
+  /* Borders should be subtle. A slightly lighter gray than the surface color works well. */
+  --border-color: #343a40;
+  
+  /* Shadows are tricky on dark backgrounds. A common technique is to use a very light, almost invisible white shadow to simulate depth. */
+  --shadow-color: rgba(255, 255, 255, 0.05);
 }
 
 /*
@@ -107,7 +141,7 @@ body{
     line-height: var(--line-height-base);
     color: var(--text-color);
     background-color: var(--background-color);
-
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 header{
     background-color: var(--surface-color);
@@ -123,6 +157,9 @@ header{
     position: sticky;
     top: 0;
     z-index: 100;
+    display: flex;
+  /* NEW: Animate the background and shadow changes. */
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 header .container{
     display: flex;
@@ -143,6 +180,8 @@ header nav ul li a{
     font-weight: var(--font-weight-bold);
     padding: 0.5rem;
     text-align: center;
+    /* NEW: Animate the color change of the navigation links. */
+    transition: color 0.3s ease-in-out; 
 }
 #hero {
   min-height: 90vh;
@@ -226,7 +265,7 @@ header nav ul li a{
   background-color: var(--surface-color);
   
   /* Add our consistent rounded corners and a subtle border. */
-  border-radius: var(--border-radius);
+  border-radius: calc(var(--border-radius) * 2);
   border: 1px solid var(--border-color);
   
   /* 
@@ -242,10 +281,18 @@ header nav ul li a{
     card's rounded corners.
   */
   overflow: hidden;
+  margin: 20px;
+  /* 
+    NEW: Animate the changes to the card's surface. Note we can group properties
+    with the same duration and timing function into a single declaration.
+  */
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 .project-image {
   width: 100%;
   display: block;
+  max-inline-size: 3872px;
+  max-block-size: 2592px;
 }
 .project-info {
   /* Use our spacing variable for consistent padding inside the card. */
@@ -274,18 +321,199 @@ header nav ul li a{
   /* Style for the primary link (e.g., Live Demo) */
   background-color: var(--primary-color);
   color: var(--surface-color);
+
+  /* NEW: Animate the button's colors. */
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 /* A secondary style for the 'View Code' link to create visual hierarchy. */
 .project-links a:last-child {
   background-color: transparent;
   color: var(--primary-color);
   border: 1px solid var(--primary-color);
+
+  /* 
+    NEW: Also add transitions here for the secondary button style.
+    This ensures that hover effects we add later will also be smooth.
+  */
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
 }
 .projects-container{
-  display: flex;
-  gap: var(--spacing-unit);
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: calc(var(--spacing-unit)*2);
+  /* justify-content: space-evenly; */
 }
+/* Experience section  */
 #experience h1 {
   text-align: center;
   margin-bottom: calc(var(--spacing-unit) * 3);
+}
+#experience .container {
+  max-width: 800px;
+  margin: auto;
+}
+.experience-content {
+  border-right: 5px solid var(--primary-color);
+  border-left: 5px solid var(--primary-color);
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.experience-title-box{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-unit);
+}
+/* Contact section */
+#contact {
+  text-align: center;
+}
+#contact .container > h1,
+#contact .container > p {
+  text-align: center;
+}
+#contact form {
+  max-width: 700px;
+  margin: 0 auto;
+}
+#contact label {
+  display: block;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 0.5rem;
+}
+#contact input[type="text"],
+#contact input[type="email"],
+#contact textarea {
+  width: 100%;
+  padding: calc(var(--spacing-unit) * 0.75);
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+  border: 3px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--surface-color);
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--text-color);
+    /* Add a smooth transition for when the fields get focus. */
+  transition: border-color 0.1s ease-in-out, box-shadow 0.2s ease-in-out;
+  /* 
+    MODIFIED: We already had a transition here for the :focus state.
+    We just need to add background-color and color to the list of
+    properties to transition.
+  */
+  transition: border-color 0.2s ease-in-out, 
+              box-shadow 0.2s ease-in-out, 
+              background-color 0.3s ease-in-out, 
+              color 0.3s ease-in-out;
+}
+#contact textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+#contact input[type="text"]:focus,
+#contact input[type="email"]:focus,
+#contact textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  /* Add a subtle "glow" effect (box-shadow) to make the active field pop. */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+#contact button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-unit);
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-color);
+  color: var(--surface-color);
+  font-size: 1.1rem;
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  /* Add a smooth transition for the hover effect. */
+  transition: filter 0.2s ease-in-out;
+}
+#contact button[type="submit"]:hover {
+  /* The filter property is a modern way to change appearance. brightness(90%) slightly darkens the element. */
+  filter: brightness(90%);
+}
+footer {
+  background-color: var(--surface-color);
+  padding: calc(var(--spacing-unit) ) 0;
+  margin-top: 20px;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-color-light);
+  text-align: center;
+  /* NEW: Animate background, border, and text color changes. */
+  transition: background-color 0.3s ease-in-out, border-top-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-unit);
+}
+footer ul {
+  display: flex;
+  gap: var(--spacing-unit);
+  list-style: none;
+}
+footer ul li a{
+  text-decoration: none;
+  color: var(--text-color-light);
+  /* Add a smooth transition for the hover effect. */
+  transition: color 0.2s ease-in-out;
+}
+footer ul li a:hover{
+  color: var(--primary-color);
+}
+/*
+  ========================================
+  THEME SWITCHER
+  ========================================
+  Styles for the light/dark mode toggle switch.
+*/
+
+.theme-switcher {
+  display: flex;
+  align-items: center;
+}
+.switch-label {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+  cursor: pointer;
+}
+.switch-checkbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 26px;
+  transition: background-color 0.4s;
+}
+.slider::before {
+  /* This pseudo-element is the "thumb" or the movable part of the switch. */
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%; /* Makes the thumb a perfect circle */
+  transition: transform 0.4s;
+}
+.switch-checkbox:checked + .slider {
+  background-color: var(--primary-color);
+}
+.switch-checkbox:checked + .slider::before {
+  transform: translateX(24px);
 }
