@@ -273,7 +273,7 @@ header nav li a:hover {
 .about-image img {
   max-width: 100%;
   height: auto;
-  border-radius: 50%;
+  border-radius: 20%;
   box-shadow: 0 4px 15px var(--shadow-color);
 }
 .about-text {
